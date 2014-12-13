@@ -23,12 +23,16 @@ if (Meteor.isClient) {
     "submit .new-task": function (event) {
     
       var text = event.target.text.value;
+
+      if (text.trim()) {
  
-      Tasks.insert({
-        text: text,
-        createdAt: new Date()
-      });     
+         Tasks.insert({
+           text: text,
+           createdAt: new Date()
+         });     
  
+      }
+
       event.target.text.value = "";
 
       return false;
